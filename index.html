@@ -1,0 +1,13 @@
+<!doctype html>
+<html lang="id"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Solitaire Recorder</title><link rel="stylesheet" href="styles.css"></head>
+<body><header><div><h1>Solitaire Recorder</h1><p>Klondike · Draw 1 · Perekam pola permainan</p></div>
+<nav><button id="newGame">Permainan Baru</button><button id="historyBtn" class="secondary">Pola Tersimpan</button></nav></header>
+<main><section class="toolbar"><div id="status">Siap bermain</div><div id="stats">Langkah: 0</div><button id="undo" class="secondary">Urungkan</button><button id="hint" class="secondary">Petunjuk</button></section>
+<section class="board">
+<div class="top-row"><div class="stock-area"><div id="stock" class="pile"></div><div id="waste" class="pile"></div></div>
+<div class="foundations" id="foundations"></div></div>
+<div id="tableau" class="tableau"></div></section>
+<section class="panel"><h2>Pencatatan pola saat ini</h2><div id="patternInfo">Mulai permainan untuk merekam pola.</div></section>
+<section id="history" class="panel hidden"><div class="panel-head"><h2>Pola tersimpan</h2><button id="closeHistory" class="secondary">Tutup</button></div><div id="patternsList"></div></section>
+</main><script src="src/game.js"></script><script src="src/renderer.js"></script></body></html>
