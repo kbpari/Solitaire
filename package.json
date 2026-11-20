@@ -3,6 +3,42 @@
   "version": "1.0.0",
   "description": "Windows Klondike Draw 1 game with local pattern recording",
   "main": "src/main.js",
-  "scripts": { "start": "electron .", "check": "node --check src/main.js && node --check src/game.js && node --check src/renderer.js" },
-  "devDependencies": { "electron": "33.2.1" }
+  "scripts": {
+    "start": "electron .",
+    "check": "node --check src/main.js && node --check src/game.js && node --check src/renderer.js",
+    "build:win": "electron-builder --win nsis"
+  },
+  "devDependencies": {
+    "electron": "33.2.1",
+    "electron-builder": "^25.1.8"
+  },
+  "build": {
+    "appId": "id.kedungneng.solitaire-recorder",
+    "productName": "Solitaire Recorder",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "index.html",
+      "styles.css",
+      "src/**/*",
+      "package.json"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    }
+  }
 }
