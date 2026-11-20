@@ -33,10 +33,18 @@ function selectOrMove(from) {
 $('stock').addEventListener('click',()=>{snapshots.push(game);game=G.draw(game)||game;selected=null;render();});
 $('waste').addEventListener('click',()=>{if(game.waste.length)selectOrMove({type:'waste'});});
 $('tableau').addEventListener('click',e=>{
- const card=e.target.closest('[data-col]'); if(!card)return;
- const col=Number(card.dataset.col),idx=Number(card.dataset.index);
- const pile=game.tableau[col]; if(!pile[idx].faceUp)return;
- selectOrMove({type:'tableau',index:col,index2:idx});
+ const card=e.target.closest('[data-col]');
+ if(card){
+  const col=Number(card.dataset.col),idx=Number(card.dataset.index);
+  const pile=game.tableau[col]; if(!pile[idx].faceUp)return;
+  selectOrMove({type:'tableau',index:col,index2:idx});
+  return;
+ }
+ const column=e.target.closest('[data-column]');
+ if(column && selected && game.tableau[Number(column.dataset.column)].length===0){
+  const next=G.move(game,selected,{type:'tableau',index:Number(column.dataset.column),index2:0});
+  if(next){snapshots.push(game);game=next;selected=null;render();}
+ }
 });
 $('foundations').addEventListener('click',e=>{
  const f=e.target.closest('[data-foundation]');if(!f)return;
