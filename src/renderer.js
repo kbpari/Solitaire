@@ -1,3 +1,4 @@
+// Solitaire Recorder V1 renderer entry point.
 const G = window.SolitaireGame;
 let game = G.newGame();
 let snapshots = [];
